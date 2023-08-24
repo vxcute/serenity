@@ -351,7 +351,7 @@ void TCPSocket::receive_tcp_packet(TCPPacket const& packet, u16 size)
 bool TCPSocket::should_delay_next_ack() const
 {
     // FIXME: We don't know the MSS here so make a reasonable guess.
-    const size_t mss = 1500;
+    const size_t mss = 1460;
 
     // RFC 1122 says we should send an ACK for every two full-sized segments.
     if (m_ack_number >= m_last_ack_number_sent + 2 * mss)
